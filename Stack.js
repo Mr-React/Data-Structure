@@ -1,6 +1,6 @@
 class Stack {
     /**
-     * Stack Structure
+     * Stack Constructor
      * @constructor
      */
     constructor(){
