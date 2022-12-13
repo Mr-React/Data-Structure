@@ -23,11 +23,14 @@ class Stack {
     }
 
     /**
-     * Returns Top of the stack element
+     * Returns Top of the stack element if stack is empty it returns null
      * @returns number
      */
     peek(){
-        return this.item[this.item.length - 1];
+        if(!this.isEmpty()){
+            return this.item[this.item.length - 1];
+        }
+        return null;
     }
 
     /**
@@ -55,6 +58,7 @@ class Stack {
 }
 
 const stack = new Stack();
+console.log("Peek() ",stack.peek());
 console.log("Stack is Empty: ",stack.isEmpty());
 
 stack.push(10);
