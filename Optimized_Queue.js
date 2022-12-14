@@ -1,9 +1,11 @@
-class Queue {
+class OP_Queue {
   /**
    * Queue Constructor
    */
   constructor() {
-    this.items = [];
+    this.items = {};
+    this.rear = 0;
+    this.front = 0;
   }
 
   /**
@@ -11,7 +13,8 @@ class Queue {
    * @param {any} element - Element wants to add
    */
   enqueue(element) {
-    this.items.push(element);
+    this.items[this.rear] = element;
+    this.rear++;
   }
 
   /**
@@ -19,7 +22,10 @@ class Queue {
    * @returns any
    */
   dequeue() {
-    return this.items.shift();
+    const item = this.items[this.front];
+    delete this.items[this.front];
+    this.front++;
+    return item;
   }
 
   /**
@@ -27,9 +33,10 @@ class Queue {
    * @returns any
    */
   peek() {
-    if (!this.isEmpty()) {
-      return this.items[0];
+    if (!this.isEmpty) {
+      return this.items[this.front];
     }
+
     return null;
   }
 
@@ -38,7 +45,7 @@ class Queue {
    * @returns boolean
    */
   isEmpty() {
-    return this.items.length === 0;
+    return this.rear - this.front === 0;
   }
 
   /**
@@ -46,19 +53,18 @@ class Queue {
    * @returns number
    */
   size() {
-    return this.items.length;
+    return this.rear - this.front;
   }
 
   /**
    * Prints the all element of queue as string
    */
   print() {
-    console.log(this.items.toString());
+    console.log(this.items);
   }
 }
 
-const queue = new Queue();
-
+const queue = new OP_Queue();
 console.log("peek()", queue.peek());
 console.log(queue.isEmpty());
 
