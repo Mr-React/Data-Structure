@@ -1,4 +1,7 @@
 class CircularQueue {
+  /**
+   * Circular Queue Constructor
+   */
   constructor(capacity) {
     this.items = new Array(10);
     this.capacity = capacity;
@@ -7,14 +10,26 @@ class CircularQueue {
     this.front = -1;
   }
 
+  /**
+   * Returns the state of Queue (Queue is full or not)
+   * @returns boolean
+   */
   isFull() {
     return this.currentLength === this.capacity;
   }
 
+  /**
+   * Checks Queue is empty or not - returns true if queue is empty otherwise false
+   * @returns boolean
+   */
   isEmpty() {
     return this.currentLength === 0;
   }
 
+  /**
+   * Adds element in Queue
+   * @param {any} element - Element wants to add
+   */
   enqueue(element) {
     if (!this.isFull()) {
       this.rear = (this.rear + 1) % this.capacity;
@@ -28,6 +43,10 @@ class CircularQueue {
     }
   }
 
+  /**
+   * Removes first element from Queue
+   * @returns any
+   */
   dequeue() {
     if (this.isEmpty()) {
       return null;
@@ -44,6 +63,10 @@ class CircularQueue {
     return item;
   }
 
+  /**
+   * Returns first element of Queue, if queue is empty then it returns null
+   * @returns any
+   */
   peek() {
     if (!this.isEmpty()) {
       return this.items[this.front];
@@ -52,6 +75,17 @@ class CircularQueue {
     return null;
   }
 
+  /**
+   * Returns the size of queue
+   * @returns number
+   */
+  size() {
+    return this.capacity;
+  }
+
+  /**
+   * Prints the all element of queue as string
+   */
   print() {
     if (this.isEmpty()) {
       console.log("Queue is Empty");
@@ -95,3 +129,4 @@ console.log("peek", queue.peek());
 
 queue.enqueue(60);
 queue.print();
+console.log("size", queue.size());
